@@ -1,0 +1,22 @@
+package com.task2;
+
+import java.util.HashMap;
+
+public class HashMapExample {
+
+	public static void main(String[] args) {
+		HashMap<String, String> students = new HashMap<String, String>();
+		students.put("Raju", "A");
+		students.put("Nitish", "B");
+		students.put("Bharath", "C");
+		students.put("veera", "D");
+		students.put("Ashok", "F");
+		students.put("Prashanth", "A");
+		students.put("Satish", "F");
+		
+		System.out.println("Students are :"+students.entrySet());
+		
+
+	}
+
+}

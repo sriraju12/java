@@ -1,0 +1,52 @@
+package com.hcl.gic.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.hcl.gic.model.Tasks;
+import com.hcl.gic.repository.TaskRepo;
+import com.hcl.gic.service.TaskService;
+@CrossOrigin(origins = "http://localhost:3000")
+@RestController
+public class TaskController {
+
+	@Autowired
+	TaskService taskService;
+	@Autowired
+	TaskRepo repo;
+     
+	
+	@PostMapping("/addtask")
+	public String addTask(@RequestParam String taskName, @RequestParam String startDate,
+			@RequestParam String completionDate, @RequestParam String status) {
+		Tasks task = new Tasks(0, taskName, startDate, completionDate, status);
+		taskService.add(task);
+		return "Task Added";
+	}
+
+	@GetMapping("/getalltasks")
+	public List<Tasks> getAll() {
+		return taskService.getAllTask();
+	}
+
+	@GetMapping("deletebytaskid")
+	public String deleteById(int id) {
+		taskService.deleteTaskById(id);
+		return "task is deleted";
+	}
+
+	@GetMapping("/edittask")
+	public String editTasks(int id, String taskName, String startDate, String completionDate, String status) {
+		Tasks task = new Tasks(id, taskName, startDate, completionDate, status);
+		taskService.editTask(task);
+		return "task is updated";
+	}
+
+}

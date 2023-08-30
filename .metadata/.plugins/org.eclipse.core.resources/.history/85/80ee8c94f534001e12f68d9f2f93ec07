@@ -1,0 +1,23 @@
+package com.hcl.pratice;
+
+import java.util.HashMap;
+
+public class HashMapDemo extends Thread {
+
+	HashMap<Integer, String> hm = new HashMap<Integer, String>();
+
+	public void run() {
+
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+	}
+
+}

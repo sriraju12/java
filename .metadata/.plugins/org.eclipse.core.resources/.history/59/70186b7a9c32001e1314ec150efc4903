@@ -1,0 +1,26 @@
+package com.task1;
+
+import java.util.Scanner;
+
+public class CheckEvenNumber {
+
+	public static void checkEven(int num) throws OddNumberException {
+		if (num % 2 != 0) {
+			throw new OddNumberException(num+" "+ "is odd number");
+
+		}
+
+	}
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		try {
+			checkEven(num);
+			System.out.println("The given number is even");
+		} catch (OddNumberException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+}
